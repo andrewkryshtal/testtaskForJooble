@@ -1,4 +1,3 @@
-import Rebase from 're-base';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -17,9 +16,9 @@ const email = process.env.REACT_APP_FIREBASE_EMAIL;
 const password = process.env.REACT_APP_FIREBASE_PASSWORD;
 
 const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore(app);
+const base = firebase.firestore(app);
 
-const base = Rebase.createClass(db);
+// const base = Rebase.createClass(db);
 
 firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     throw error;

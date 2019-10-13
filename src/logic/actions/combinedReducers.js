@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import collection from './firebaseMethods/reducer';
 
 const allReducers = combineReducers({
-    collection: collection
+    fireBase: collection
 })
 
 export default allReducers;

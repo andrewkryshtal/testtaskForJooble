@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import {getCollection} from '../../logic/actions/firebaseMethods/actions'
+import {getCollection, postItem } from '../../logic/actions/firebaseMethods/actions'
 import App from './App'
 
 function mapStateToProps(state, ownProps) {
@@ -9,10 +8,15 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        getCollection
-    }, dispatch)
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({
+//         getCollection
+//     }, dispatch)
+// }
+
+const mapDispatchToProps = {
+    getCollection,
+    postItem
 }
 
 export default connect(
