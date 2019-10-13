@@ -1,22 +1,20 @@
 import { connect } from 'react-redux';
-import {getCollection, postItem } from '../../logic/actions/firebaseMethods/actions'
+import {getCollection, postItem, deleteItem } from '../../logic/actions/firebaseMethods/actions'
+import { openAddItemModal } from '../../logic/actions/modalActions/actions';
 import App from './App'
 
 function mapStateToProps(state, ownProps) {
     return {
-        collection: state.collection
+        collection: state.data.collection,
+        isAddItemModalOpen: state.addItemModal.isAddItemModalOpen
     }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({
-//         getCollection
-//     }, dispatch)
-// }
-
 const mapDispatchToProps = {
     getCollection,
-    postItem
+    postItem,
+    deleteItem,
+    openAddItemModal
 }
 
 export default connect(

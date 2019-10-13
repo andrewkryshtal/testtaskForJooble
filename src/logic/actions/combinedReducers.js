@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import collection from './firebaseMethods/reducer';
+import dataReducer from './firebaseMethods/reducer';
+import addItemModalReducer from './modalActions/reducer'
 
 const allReducers = combineReducers({
-    fireBase: collection
+    data: dataReducer,
+    addItemModal: addItemModalReducer
 })
 
 export default allReducers;

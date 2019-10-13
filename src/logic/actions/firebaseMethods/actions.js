@@ -9,10 +9,11 @@ export function getCollection() {
 
         base.collection(firebaseEndpoint).get()
             .then((querySnapshot) => {
-                var collection = [];
+                let collection = [];
                 querySnapshot.forEach((doc) => {
                     collection.push(doc.data())
                 });
+                console.log('collection', collection);
                 let type = actionTypes.GET_COLLECTION_SUCCESS;
                 return dispatch(Object.assign({type}, {data: collection}));
             })
@@ -24,9 +25,6 @@ export function getCollection() {
   }
 
 export function postItem(item) {
-
-    console.log(item);
-    debugger;
     return (dispatch) => {
         dispatch({ type: actionTypes.POST_ITEM });
         base.collection(firebaseEndpoint).doc(item.id).set(item)

@@ -2,11 +2,10 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
   collection: [],
-  isCollectionFetching: false,
-  itemIsPosting: false
+  isCollectionFetching: false
 };
 
-export default function collection(state = initialState, action) {
+export default function dataReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.GET_COLLECTION:
       return {
@@ -16,7 +15,7 @@ export default function collection(state = initialState, action) {
       case actionTypes.GET_COLLECTION_SUCCESS:
       return {
         ...state,
-        isItemFetching: false,
+        isCollectionFetching: false,
         collection: action.data
       };
     default:
