@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalFooter, Button, ModalBody } from 'reactstrap';
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const propTypes = {
     isAddItemModalOpen: PropTypes.bool,
     closeAddItemModal: PropTypes.func,
-    openAddItemModal: PropTypes.func
+    openAddItemModal: PropTypes.func,
+    initialValues: PropTypes.object
 }
 
 class AddItemModal extends Component {
     constructor(props) {
         super(props)
-
-        this.state = {}
+        
+        this.state ={}
     }
 
     render() {
@@ -24,19 +25,20 @@ class AddItemModal extends Component {
                     Modal title
                 </ModalHeader>
                 <ModalBody>
-                    <Field 
-                        name="code"
-                        component="input"
-                        type="text"
-                        placeholder="Code"
-                    />
+                    <form>
+                        <Field 
+                            name="code"
+                            component="input"
+                            type="text"
+                            placeholder="Code"
+                        />
+                    </form>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary">Do Something</Button>
                     <Button color="secondary" onClick={() => this.props.closeAddItemModal()}>Cancel</Button>
                 </ModalFooter>
             </Modal>
-            // <p>test</p>
         )
     }
 }
@@ -44,7 +46,8 @@ class AddItemModal extends Component {
 AddItemModal.propTypes = propTypes
 
 AddItemModal = reduxForm({
-    form: 'addItem'
+    form: 'addItem',
+    enableReinitialize: true,
 })(AddItemModal);
 
 export default AddItemModal;

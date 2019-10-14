@@ -18,8 +18,15 @@ const propTypes = {
 class App extends Component {
   constructor(props) {
     super(props);
+    // this.state = {};
+    this.openModalHandler = this.openModalHandler.bind(this);
+    this.props.getCollection();
+  }
 
-    this.props.getCollection()
+  openModalHandler(item) {
+    this.setState({item: item, test: '123'});
+    console.log(this.state);
+    debugger;
   }
 
   render() {
@@ -47,8 +54,8 @@ class App extends Component {
           {item.price}
           </div>
           <div className='btns col-md-3 offset-md-3'>
-            <Button onClick={(ref) => {console.log(ref)}}>Edit</Button>
-            <Button onClick={(ref) => {this.props.deleteItem(item)}}>Delete</Button>
+            <Button onClick={(ref) => {this.openModalHandler(item)}}>Edit</Button>
+            <Button onClick={() => {this.props.deleteItem(item)}}>Delete</Button>
           </div>
         </div>
     ));
@@ -59,11 +66,11 @@ class App extends Component {
         <Button onClick={() => { this.props.openAddItemModal() }}>add one more item</Button>
         
         {this.props.isAddItemModalOpen ?
-          <AddItemModal /> :
+          <AddItemModal 
+            initialValues={{code: 123}}
+          /> :
           null
         }
-        
-        {console.log(AddItemModal)}
       </div>
      );
   }

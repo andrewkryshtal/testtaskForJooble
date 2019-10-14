@@ -6,7 +6,7 @@ import { reducer as formReducer } from 'redux-form';
 const allReducers = combineReducers({
     data: dataReducer,
     addItemModal: addItemModalReducer,
-    formReducer
+    form: formReducer
 })
 
 export default allReducers;
