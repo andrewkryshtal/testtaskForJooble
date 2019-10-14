@@ -1,5 +1,6 @@
 import {base} from '../../../base'
 import * as actionTypes from './actionTypes';
+import uuidv4 from 'uuid/v4';
 
 const firebaseEndpoint = process.env.REACT_APP_FIREBASE_APP_COLLECTION;
 
@@ -13,7 +14,6 @@ export function getCollection() {
                 querySnapshot.forEach((doc) => {
                     collection.push(doc.data())
                 });
-                console.log('collection', collection);
                 let type = actionTypes.GET_COLLECTION_SUCCESS;
                 return dispatch(Object.assign({type}, {data: collection}));
             })
@@ -27,6 +27,11 @@ export function getCollection() {
 export function postItem(item) {
     return (dispatch) => {
         dispatch({ type: actionTypes.POST_ITEM });
+        if(!item.id) {
+            console.log(item.id, !item.id);
+            console.log('test');
+            item.id = uuidv4();
+        }
         base.collection(firebaseEndpoint).doc(item.id).set(item)
             .then(function(docRef) {
                 dispatch({ type: actionTypes.POST_ITEM_SUCCESS });
@@ -51,11 +56,5 @@ export function deleteItem(item) {
                 dispatch({ type: actionTypes.DELETE_ITEM_ERROR });
                 throw error;
             });
-    }
-}
-
-export function editItem(item) {
-    return (dispatch) => {
-        dispatch(postItem(item));
     }
 }

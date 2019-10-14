@@ -11,3 +11,15 @@ export function closeAddItemModal() {
         dispatch({type: actionTypes.CLOSE_ADD_ITEM_MODAL});
     }
 }
+
+export function incrementScreenCounter() {
+    return (dispatch) => {
+        dispatch({type: actionTypes.INCREMENT_SCREEN_COUNTER})
+    }
+}
+
+export function decrementScreenCounter() {
+    return (dispatch) => {
+        dispatch({type: actionTypes.DECREMENT_SCREEN_COUNTER})
+    }
+}
