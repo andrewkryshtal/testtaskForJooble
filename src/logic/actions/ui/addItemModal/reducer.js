@@ -11,12 +11,13 @@ export default function addItemModalReducer(state = initialState, action) {
       case actionTypes.OPEN_ADD_ITEM_MODAL:
         return {
           ...state,
-          isAddItemModalOpen: true
+          isAddItemModalOpen: true,
+          screenToShow: 1
         };
       case actionTypes.CLOSE_ADD_ITEM_MODAL:
         return {
           ...state,
-          isAddItemModalOpen: false
+          isAddItemModalOpen: false,
         };
       case actionTypes.INCREMENT_SCREEN_COUNTER:
           return {
