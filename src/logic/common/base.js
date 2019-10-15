@@ -18,8 +18,6 @@ const password = process.env.REACT_APP_FIREBASE_PASSWORD;
 const app = firebase.initializeApp(firebaseConfig);
 const base = firebase.firestore(app);
 
-// const base = Rebase.createClass(db);
-
 firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     throw error;
 })
