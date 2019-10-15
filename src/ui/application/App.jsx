@@ -34,13 +34,16 @@ class App extends Component {
     const renderItems = collection.map((item, index) => (
       <div className='itemContainer row' key={index}>
           <div className='code col-md-2'>
+            <div><b>Code</b></div>
             {item.code}
           </div>
           <div className='name col-md-2'>
-          {item.name}
+            <div><b>Name</b></div>
+            {item.name}
           </div>
           <div className='price col-md-2'>
-          {item.price}
+            <div><b>Price</b></div>
+            {item.price}
           </div>
           <div className='btns col-md-3 offset-md-3'>
             <Button onClick={() => {this.openModalHandler(item)}}>Edit</Button>
