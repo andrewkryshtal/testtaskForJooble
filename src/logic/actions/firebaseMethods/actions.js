@@ -28,8 +28,6 @@ export function postItem(item) {
     return (dispatch) => {
         dispatch({ type: actionTypes.POST_ITEM });
         if(!item.id) {
-            console.log(item.id, !item.id);
-            console.log('test');
             item.id = uuidv4();
         }
         base.collection(firebaseEndpoint).doc(item.id).set(item)

@@ -30,10 +30,6 @@ class AddItemModal extends Component {
     }
 
     handleFormSubmit() {
-        // if(this.props.initialValues === null) {
-        //     data = Object.assign(this.props.myValues, {id: uuidv4()})
-        // }
-        // data = Object.assign(this.props.myValues, {id: this.props.initialValues.id});
         let data = this.props.initialValues === null
         ? Object.assign(this.props.myValues, {id: uuidv4()})
         : Object.assign(this.props.myValues, {id: this.props.initialValues.id});
