@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 
-const inputField = ({ input, label, type, className, labelClassName, validationErrorClass, fieldWrapper, meta: { dirty, error, warning } }) => (
+const InputField = ({ input, label, type, className, labelClassName, validationErrorClass, fieldWrapper, meta: { dirty, error, warning } }) => (
    <Fragment>
         <div className={fieldWrapper}>
         <label className={labelClassName}>{label}</label>
@@ -10,4 +10,4 @@ const inputField = ({ input, label, type, className, labelClassName, validationE
     </Fragment>
 )
 
-export default inputField;
+export default InputField;

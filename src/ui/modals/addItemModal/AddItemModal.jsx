@@ -8,7 +8,8 @@ import classnames from 'classnames';
 import './addItemModal.scss';
 import inputField from '../../common/inputField';
 import uuidv4 from 'uuid/v4';
-import validate from '../../../logic/common/validation'
+import validate from '../../../logic/common/validation';
+import { addItemFornName } from '../../../logic/common/constants';
 
 const propTypes = {
     isAddItemModalOpen: PropTypes.bool,
@@ -16,9 +17,11 @@ const propTypes = {
     openAddItemModal: PropTypes.func,
     initialValues: PropTypes.object,
     screenToShow: PropTypes.number,
+    totalScreens: PropTypes.number,
     incrementScreenCounter: PropTypes.func,
     decrementScreenCounter: PropTypes.func,
-    postItem: PropTypes.func
+    postItem: PropTypes.func,
+    values: PropTypes.object
 }
 
 class AddItemModal extends Component {
@@ -43,7 +46,7 @@ class AddItemModal extends Component {
         return (
             <Modal isOpen={true} toggle={this.props.closeAddItemModal}>
                 <ModalHeader toggle={this.props.closeAddItemModal}>
-                    Add / edit medicine {this.props.screenToShow}/2
+                    Add / edit medicine {this.props.screenToShow}/{this.props.totalScreens}
                 </ModalHeader>
                 <ModalBody>
                     <form>
@@ -133,15 +136,15 @@ class AddItemModal extends Component {
                 <ModalFooter>
                     <Button onClick={this.props.closeAddItemModal}>Cancel</Button>
                     {
-                        this.props.screenToShow === 1 
+                        this.props.screenToShow !== this.props.totalScreens 
                         ? <Button onClick={this.props.incrementScreenCounter}>Next</Button>
                         : 
-                        this.props.screenToShow === 2
+                        this.props.screenToShow !== 1
                         ? <Button onClick={this.props.decrementScreenCounter}>Prev</Button>
                         : null
                     }
                     {
-                        this.props.screenToShow === 2 
+                        this.props.screenToShow !== 1 
                         ? <Button onClick={this.handleFormSubmit} disabled={this.props.invalid}>Save/Edit</Button>
                         : null
                     }
@@ -154,7 +157,7 @@ class AddItemModal extends Component {
 AddItemModal.propTypes = propTypes
 
 AddItemModal = reduxForm({
-    form: 'addItem',
+    form: addItemFornName,
     enableReinitialize: true,
     validate
 })(AddItemModal);

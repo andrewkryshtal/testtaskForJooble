@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
-import dataReducer from './firebaseMethods/reducer';
-import addItemModalReducer from './modalActions/reducer'
+import dataReducer from './data/reducer';
+import uiReducers from './ui/combineReducers';
 import { reducer as formReducer } from 'redux-form';
 
 const allReducers = combineReducers({
     data: dataReducer,
-    addItemModal: addItemModalReducer,
+    ui: uiReducers,
     form: formReducer
 })
 

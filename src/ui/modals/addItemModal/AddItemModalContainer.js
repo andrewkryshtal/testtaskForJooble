@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
-import { openAddItemModal, closeAddItemModal, incrementScreenCounter, decrementScreenCounter } from '../../../logic/actions/modalActions/actions';
-import { postItem } from '../../../logic/actions/firebaseMethods/actions';
-import AddItemModal from './AddItemModal.js'
+import { openAddItemModal, closeAddItemModal, incrementScreenCounter, decrementScreenCounter } from '../../../logic/actions/ui/addItemModal/actions';
+import { postItem } from '../../../logic/actions/data/actions';
+import AddItemModal from './AddItemModal.jsx';
 
 function mapStateToProps(state, ownProps) {
     return {
-        isAddItemModalOpen: state.addItemModal.isAddItemModalOpen,
+        isAddItemModalOpen: state.ui.addItemModal.isAddItemModalOpen,
         initialValues: ownProps.initialValues,
-        screenToShow: state.addItemModal.screenToShow,
+        screenToShow: state.ui.addItemModal.screenToShow,
+        totalScreens: state.ui.addItemModal.totalScreens
     }
 }
 

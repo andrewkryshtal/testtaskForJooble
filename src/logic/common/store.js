@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import allReducers from '../actions/combinedReducers';
 import thunk from 'redux-thunk';
 
-export default function configureStore(initialState = {}, config = {}) {
+export default function configureStore(initialState = {}) {
   const middlewares = [thunkMiddleware];
 
   const enhancers = [

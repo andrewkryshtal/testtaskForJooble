@@ -2,7 +2,8 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
     isAddItemModalOpen: false,
-    screenToShow: 1
+    screenToShow: 1,
+    totalScreens: 2
 };
 
 export default function addItemModalReducer(state = initialState, action) {

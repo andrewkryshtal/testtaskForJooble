@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import AddItemModal from '../modals/addItemModal';
 import 'bootstrap/dist/css/bootstrap.css';
-import './app.scss'
+import './app.scss';
 
 const propTypes = {
   getCollection: PropTypes.func,
