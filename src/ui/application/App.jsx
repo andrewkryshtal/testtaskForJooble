@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button, Spinner } from 'reactstrap';
 import AddItemModal from '../modals/addItemModal';
 import 'bootstrap/dist/css/bootstrap.css';
 import './app.scss';
@@ -53,23 +53,37 @@ class App extends Component {
     ));
 
     return ( 
-        <div className='container'>
-        {renderItems}
-
-        {
-          !isCollectionFetching ?
-          <Button onClick={() => { this.openModalHandler() }}>add one more item</Button> :
-          <h1>loading...</h1>
-        }
-        
-        
-        {this.props.isAddItemModalOpen ?
-          <AddItemModal 
-            initialValues={this.state.item}
-          /> :
+      <Fragment>
+        {isCollectionFetching ?
+          <div className="spinnerWrapper">
+            <div className='spinnerOverlay'>
+              <Spinner color="dark" />
+            </div>
+          </div> :
           null
         }
-      </div>
+        <div className="header">
+          <h1>Medicine List:</h1>
+        </div>
+        
+        <div className='container'>
+          {renderItems}
+
+          {
+            !isCollectionFetching ?
+            <Button onClick={() => { this.openModalHandler() }}>add one more item</Button> :
+            null
+          }
+          
+          
+          {this.props.isAddItemModalOpen ?
+            <AddItemModal 
+              initialValues={this.state.item}
+            /> :
+            null
+          }
+        </div>
+      </Fragment>
       
      );
   }
