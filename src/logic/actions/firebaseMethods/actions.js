@@ -1,4 +1,4 @@
-import {base} from '../../../base'
+import {base} from '../../common/base'
 import * as actionTypes from './actionTypes';
 import uuidv4 from 'uuid/v4';
 

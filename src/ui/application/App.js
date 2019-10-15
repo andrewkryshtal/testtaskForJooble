@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import uuidv4 from 'uuid/v4';
 import { Button } from 'reactstrap';
 import AddItemModal from '../modals/addItemModal';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -8,6 +7,7 @@ import './app.scss'
 
 const propTypes = {
   getCollection: PropTypes.func,
+  isCollectionFetching: PropTypes.bool,
   postItem: PropTypes.func,
   deleteItem: PropTypes.func,
   collection: PropTypes.array,
@@ -30,18 +30,7 @@ class App extends Component {
   }
 
   render() {
-    let item = {
-      id: uuidv4(),
-      code: '123',
-      name: 'name',
-      price: 123,
-      shelfLife: 123,
-      compositionAndFormOfRelease: 'compositionAndFormOfRelease',
-      indication: 'indication',
-      сontraindications: 'сontraindications'
-    }
-
-    const collection = this.props.collection;
+    const {collection, isCollectionFetching} = this.props;
     const renderItems = collection.map((item, index) => (
       <div className='itemContainer row' key={index}>
           <div className='code col-md-2'>
@@ -61,9 +50,15 @@ class App extends Component {
     ));
 
     return ( 
-      <div className='container'>
+        <div className='container'>
         {renderItems}
-        <Button onClick={() => { this.openModalHandler() }}>add one more item</Button>
+
+        {
+          !isCollectionFetching ?
+          <Button onClick={() => { this.openModalHandler() }}>add one more item</Button> :
+          <h1>loading...</h1>
+        }
+        
         
         {this.props.isAddItemModalOpen ?
           <AddItemModal 
@@ -72,6 +67,7 @@ class App extends Component {
           null
         }
       </div>
+      
      );
   }
 }

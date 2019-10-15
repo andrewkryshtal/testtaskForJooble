@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import allReducers from './logic/actions/combinedReducers';
+import allReducers from '../actions/combinedReducers';
 import thunk from 'redux-thunk';
 
 export default function configureStore(initialState = {}, config = {}) {

@@ -9,3 +9,18 @@
 .inputStyle {
     border: 1px solid grey;
 }
+
+.validationErrorClass {
+    display: block;
+    text-align: right;
+    color: red;
+}
+
+.fieldWrapper {
+    height: 70px;
+}
+
+.releaseForm {
+    vertical-align: top;
+    margin-top: 6px;
+}

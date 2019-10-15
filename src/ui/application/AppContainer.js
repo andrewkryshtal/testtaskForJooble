@@ -6,6 +6,7 @@ import App from './App'
 function mapStateToProps(state, ownProps) {
     return {
         collection: state.data.collection,
+        isCollectionFetching: state.data.isCollectionFetching,
         isAddItemModalOpen: state.addItemModal.isAddItemModalOpen
     }
 }
