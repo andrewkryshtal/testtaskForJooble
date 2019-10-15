@@ -19,7 +19,7 @@ export function getCollection() {
             })
             .catch((error) => {
                 dispatch({ type: actionTypes.GET_COLLECTION_ERROR });
-                throw error;
+                console.error(error);
             });
     };
   }
@@ -37,7 +37,7 @@ export function postItem(item) {
             })
             .catch(function(error) {
                 dispatch({ type: actionTypes.POST_ITEM_ERROR });
-                throw error;
+                console.error(error);
             });
     }
 }
@@ -52,7 +52,7 @@ export function deleteItem(item) {
             })
             .catch((error) => {
                 dispatch({ type: actionTypes.DELETE_ITEM_ERROR });
-                throw error;
+                console.error(error);
             });
     }
 }
